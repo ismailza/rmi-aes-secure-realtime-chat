@@ -28,6 +28,30 @@ public class AESEncryption {
     }
 
     /**
+     * Constructor that initializes the AESEncryption instance with a provided AES-256 key.
+     *
+     * @param key the AES-256 key to be used for encryption and decryption. Must be exactly 32 bytes.
+     * @throws IllegalArgumentException if the key is null or not exactly 32 bytes.
+     */
+    public AESEncryption(byte[] key) {
+        if (key == null || key.length != 32) {
+            throw new IllegalArgumentException("Key must be exactly 32 bytes for AES-256");
+        }
+        this.aesCore = new AESCore();
+        this.key = key.clone();
+        aesCore.keyExpansion(this.key);
+    }
+
+    /**
+     * Returns a copy of the AES encryption key.
+     *
+     * @return a byte array containing the AES encryption key
+     */
+    public byte[] getKey() {
+        return key.clone();
+    }
+
+    /**
      * Generates a random AES-256 key and expands it for use in encryption.
      */
     private void generateKey() {

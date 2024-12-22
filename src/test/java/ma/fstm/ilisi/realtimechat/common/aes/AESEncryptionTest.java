@@ -3,6 +3,9 @@ package ma.fstm.ilisi.realtimechat.common.aes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+
+import java.security.SecureRandom;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AESEncryptionTest {
@@ -181,4 +184,22 @@ public class AESEncryptionTest {
             aes.decrypt(tamperedEncrypted);
         }, "Tampered ciphertext should throw exception");
     }
+
+    @Test
+    @DisplayName("Test custom key encryption and decryption")
+    void testCustomKeyEncryptionDecryption() {
+        byte[] customKey = new byte[32];
+        new SecureRandom().nextBytes(customKey);
+        AESEncryption customAes = new AESEncryption(customKey);
+
+        String message = "Custom key test message";
+        String encrypted = customAes.encrypt(message);
+        String decrypted = customAes.decrypt(encrypted);
+
+        assertEquals(message, decrypted, "Decrypted message should match original with custom key");
+
+        // Verify the key used
+        assertArrayEquals(customKey, customAes.getKey(), "Custom key should be correctly set");
+    }
+
 }
