@@ -56,16 +56,16 @@ The system consists of three main parts:
 
 ## Screenshots
 ![Login](./assets/login.png)
-The login screen where users can enter their username to join the chat.
+- The login screen where users can enter their username to join the chat.
 
 ![Initial Chat](./assets/initial-chat.png)
-The initial chat screen shows the list of online users and the chat area.
+- The initial chat screen shows the list of online users and the chat area.
 
 ![Chatting](./assets/chatting.png)
-A conversation between two users with encrypted messages.
+- A conversation between two users with encrypted messages.
 
 ![Multiple Chats](./assets/multiple-chats.png)
-Multiple chat windows for private messaging between users.
+- Multiple chat windows for private messaging between users.
 
 ## Author
 - [Ismail ZAHIR](https://github.com/ismailza): [LinkedIn](https://www.linkedin.com/in/ismailzahir01/)
